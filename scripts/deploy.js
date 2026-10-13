@@ -4,9 +4,9 @@ async function main() {
   const Consent = await hre.ethers.getContractFactory("PatientConsent");
   const consent = await Consent.deploy();
 
-  await consent.deployed();
+  await consent.waitForDeployment();
 
-  console.log("PatientConsent deployed at:", consent.address);
+  console.log("PatientConsent deployed at:", await consent.getAddress());
 }
 
 main()
@@ -15,6 +15,7 @@ main()
     console.error(error);
     process.exit(1);
   });
+
 
 
 
